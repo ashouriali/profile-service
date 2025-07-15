@@ -1,5 +1,6 @@
 package com.example.userProfile.common.exception;
 
+import com.example.userProfile.common.logging.GeneralLogger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,7 +14,7 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-
+    private GeneralLogger logger = new GeneralLogger(GlobalExceptionHandler.class);
 
     private Map<String, Object> createErrorResponse(String error, HttpStatus status, String message) {
         Map<String, Object> body = new HashMap<>();
@@ -30,6 +31,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 ex.getMessage()
         );
+        logger.error(ex.getMessage(), ex);
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -41,6 +43,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 ex.getStatus(),
                 ex.getMessage()
         );
+        logger.error(ex.getMessage(), ex);
         return new ResponseEntity<>(errorResponse, ex.getStatus());
     }
 }
