@@ -1,7 +1,7 @@
 package com.example.userProfile.model;
 
 import com.example.userProfile.dto.UserProfileCreationDto;
-import com.example.userProfile.dto.UserProfileDto;
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserProfileEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    //TODO alia: maybe you had better change it to be more compatible with postgres
 
+    @Nonnull
     @Column(unique = true, nullable = false)
     private String email;
 
