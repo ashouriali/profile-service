@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>userProfile</artifactId>
+	<artifactId>profileService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>userProfile</name>
+	<name>profileService</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -118,7 +118,7 @@
 						<wsdlUrl>http://localhost:7070/ws/userSoapService?wsdl</wsdlUrl>
 					</wsdlUrls>
 					<keep>true</keep>
-					<packageName>com.example.userProfile.soap.userService</packageName>
+					<packageName>com.example.profileService.soap.userService</packageName>
 					<sourceDestDir>src/main/java</sourceDestDir>
 				</configuration>
 			</plugin>
